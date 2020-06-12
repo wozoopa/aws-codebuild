@@ -1,0 +1,50 @@
+variable "project_name"          { default = "" }
+variable "description"           { }
+variable "build_timeout"         { }
+variable "codebuild_role"        { }
+variable "artifacts_type"        { default = "NO_ARTIFACTS"}
+# environment section
+variable "env_compute_type"      { default = "BUILD_GENERAL1_SMALL" }
+variable "env_image"             { default = "aws/codebuild/standard:1.0" }
+variable "env_type"              { default = "LINUX_CONTAINER" } 
+variable "env_image_pc_type"     { default = "CODEBUILD" }
+## variables
+#variable "var1_name"             { }
+#variable "var1_value"            { }
+#variable "var2_name"             { }
+#variable "var2_value"            { }
+#variable "var2_type"             { default = "PARAMETER_STORE" }
+# logs
+variable "log_group"             { default = "log-group" }
+variable "log_stream"            { default = "log-stream" }
+variable "s3_logs_status"        {
+   description = "Default should be ENABLED"
+}
+#variable "s3_logs_location"      { }
+variable "buildspec_file"        { }
+# source
+variable "source_type"           {
+   description = "Possible values: CODECOMMIT, CODEPIPELINE, GITHUB, GITHUB_ENTERPRISE, BITBUCKET, S3 or NO_SOURCE"
+   default = "CODECOMMIT"
+}
+# default = "GITHUB" 
+#
+variable "source_location"       { default = "" }
+variable "source_version"        { default = "master" }
+#
+# network
+#
+variable "vpc_id" { }
+variable "subnet_ids" {
+   type = "list"
+   default = []
+}
+variable "security_group_ids"    {
+   type = "list"
+   default = []
+}
+#
+# tags
+#
+variable "env_tag"               { default = "DEV" }
+
